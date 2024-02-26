@@ -591,6 +591,7 @@ struct _GLFWwindow
 
     GLFWbool            stickyKeys;
     GLFWbool            stickyMouseButtons;
+    GLFWbool            touchInput;
     GLFWbool            lockKeyMods;
     GLFWbool            disableMouseButtonLimit;
     int                 cursorMode;
@@ -625,6 +626,7 @@ struct _GLFWwindow
         GLFWimestatusfun          imestatus;
         GLFWpreeditcandidatefun   preeditCandidate;
         GLFWdropfun               drop;
+        GLFWtouchfun              touch;
     } callbacks;
 
     // This is defined in platform.h
@@ -747,6 +749,8 @@ struct _GLFWplatform
     void (*resetPreeditText)(_GLFWwindow*);
     void (*setIMEStatus)(_GLFWwindow*,int);
     int  (*getIMEStatus)(_GLFWwindow*);
+    void (*setTouchInput)(_GLFWwindow*,int);
+    GLFWbool (*touchInputSupported)(void);
     GLFWbool (*initJoysticks)(void);
     void (*terminateJoysticks)(void);
     GLFWbool (*pollJoystick)(_GLFWjoystick*,int);
@@ -989,6 +993,7 @@ void _glfwInputScroll(_GLFWwindow* window, double xoffset, double yoffset);
 void _glfwInputMouseClick(_GLFWwindow* window, int button, int action, int mods);
 void _glfwInputCursorPos(_GLFWwindow* window, double xpos, double ypos);
 void _glfwInputCursorEnter(_GLFWwindow* window, GLFWbool entered);
+void _glfwInputTouch(_GLFWwindow* window, int touch, int action, double xpos, double ypos);
 void _glfwInputDrop(_GLFWwindow* window, int count, const char** names);
 void _glfwInputJoystick(_GLFWjoystick* js, int event);
 void _glfwInputJoystickAxis(_GLFWjoystick* js, int axis, float value);

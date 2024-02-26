@@ -538,6 +538,8 @@ GLFWbool _glfwConnectCocoa(int platformID, _GLFWplatform* platform)
         .resetPreeditText = _glfwResetPreeditTextCocoa,
         .setIMEStatus = _glfwSetIMEStatusCocoa,
         .getIMEStatus = _glfwGetIMEStatusCocoa,
+        .setTouchInput = _glfwSetTouchInputCocoa,
+        .touchInputSupported = _glfwTouchInputSupportedCocoa,
         .initJoysticks = _glfwInitJoysticksCocoa,
         .terminateJoysticks = _glfwTerminateJoysticksCocoa,
         .pollJoystick = _glfwPollJoystickCocoa,
